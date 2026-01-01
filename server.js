@@ -192,6 +192,36 @@ app.get('/', (req, res) => {
 });
 
 /* ======================
+   🔁 SPA HASH REDIRECT
+   Redirige les chemins non-API et non-fichiers vers /#<path>
+   Exemple: /contact  ->  /#/contact
+   Ceci permet à HashRouter de gérer les routes profondes lorsque
+   le serveur reçoit directement une URL sans hash.
+====================== */
+app.use((req, res, next) => {
+  try {
+    const requestPath = req.path || '';
+
+    // Ne pas rediriger les routes API, ni les assets publics ni les fichiers (ex: .css, .js, .png)
+    if (requestPath.startsWith('/api') || requestPath.startsWith('/user') || requestPath.startsWith('/product') || requestPath.startsWith('/public') || path.extname(requestPath)) {
+      return next();
+    }
+
+    // Si l'URL contient déjà un hash (rare côté serveur), laisser passer
+    if (req.originalUrl && req.originalUrl.includes('#')) {
+      return next();
+    }
+
+    // Construire la cible : /# + originalUrl (inclut query string)
+    const target = `${req.protocol}://${req.get('host')}/#${req.originalUrl}`;
+    return res.redirect(301, target);
+  } catch (err) {
+    console.error('Erreur middleware hash-redirect:', err);
+    return next();
+  }
+});
+
+/* ======================
    ❌ ERROR HANDLER
 ====================== */
 app.use((err, req, res, next) => {
