@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { HiHeart, HiOutlineHeart, HiShare } from 'react-icons/hi2';
+import config from '../config';
 
 // Fonction helper pour les URLs d'images
 const getImageUrl = (coverImage) => {
@@ -15,7 +16,7 @@ const getImageUrl = (coverImage) => {
   }
   
   // Sinon, c'est un fichier local
-  return `http://localhost:5000/public/images/${coverImage}`;
+  return `${config.API_URL}/public/images/${coverImage}`;
 };
 
 export default function RecipeDetails() {
@@ -34,7 +35,7 @@ export default function RecipeDetails() {
     const fetchRecipe = async () => {
       try {
         setLoading(true);
-        const res = await axios.get(`http://localhost:5000/api/recipes/${id}`);
+        const res = await axios.get(`${config.API_URL}/api/recipes/${id}`);
         setRecipe(res.data);
 
         // Determine favorite status (if logged in)
@@ -44,7 +45,7 @@ export default function RecipeDetails() {
 
         if (token && storedUser) {
           try {
-            const favRes = await axios.get('http://localhost:5000/user/favorites', {
+            const favRes = await axios.get(`${config.API_URL}/user/favorites`, {
               headers: { Authorization: `Bearer ${token}` }
             });
             const favs = favRes.data.favorites || [];
@@ -105,7 +106,7 @@ export default function RecipeDetails() {
     setIsFavorite(prev => !prev);
 
     try {
-      const res = await axios.put(`http://localhost:5000/user/favorite/${id}`, null, {
+      const res = await axios.put(`${config.API_URL}/user/favorite/${id}`, null, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setIsFavorite(!!res.data.isFavorite);
@@ -228,7 +229,7 @@ export default function RecipeDetails() {
                             if (!confirm('Supprimer ce commentaire ?')) return;
                             try {
                               const token = localStorage.getItem('token');
-                              const resp = await axios.delete(`http://localhost:5000/api/recipes/${id}/comment/${c._id}`, { headers: { Authorization: `Bearer ${token}` } });
+                              const resp = await axios.delete(`${config.API_URL}/api/recipes/${id}/comment/${c._id}`, { headers: { Authorization: `Bearer ${token}` } });
                               setRecipe(prev => ({ ...prev, comments: resp.data.comments, ratingsAvg: resp.data.ratingsAvg, ratingsCount: resp.data.ratingsCount }));
                             } catch (err) { console.error('Delete failed', err); alert('Suppression échouée'); }
                           }}>Supprimer</button>
@@ -239,7 +240,7 @@ export default function RecipeDetails() {
                           if (reason === null) return;
                           try {
                             const token = localStorage.getItem('token');
-                            await axios.post(`http://localhost:5000/api/recipes/${id}/comment/${c._id}/report`, { reason }, { headers: { Authorization: `Bearer ${token}` } });
+                            await axios.post(`${config.API_URL}/api/recipes/${id}/comment/${c._id}/report`, { reason }, { headers: { Authorization: `Bearer ${token}` } });
                             alert('Commentaire signalé. Merci.');
                           } catch (err) { console.error('Report failed', err); alert('Signalement échoué'); }
                         }}>Signaler</button>
@@ -285,7 +286,7 @@ export default function RecipeDetails() {
                     if (!token) { navigate('/login'); return; }
                     try {
                       const res = await axios.post(
-                        `http://localhost:5000/api/recipes/${id}/comment`, 
+                        `${config.API_URL}/api/recipes/${id}/comment`, 
                         { 
                           text: draftCommentText, 
                           rating: draftCommentRating 

@@ -4,6 +4,7 @@ import { HiHeart, HiOutlineHeart } from 'react-icons/hi2';
 import { HiMiniPencilSquare } from "react-icons/hi2";
 import { MdDeleteOutline } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
+import config from '../config';
 import './RecipeCard.css';
 
 const getImageUrl = (coverImage) => {
@@ -15,7 +16,7 @@ const getImageUrl = (coverImage) => {
         return coverImage;
     }
     
-    return `http://localhost:5000/public/images/${coverImage}`;
+    return `${config.API_URL}/public/images/${coverImage}`;
 };
 
 function MyRecipes() {
@@ -39,7 +40,7 @@ function MyRecipes() {
                     return;
                 }
 
-                const recipesResponse = await axios.get("http://localhost:5000/api/recipes/mine", {
+                const recipesResponse = await axios.get(`${config.API_URL}/api/recipes/mine`, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 
@@ -50,7 +51,7 @@ function MyRecipes() {
                 setRecipes(recipesData);
 
                 try {
-                    const favoritesResponse = await axios.get("http://localhost:5000/user/favorites", {
+                    const favoritesResponse = await axios.get(`${config.API_URL}/user/favorites`, {
                         headers: { Authorization: `Bearer ${token}` }
                     });
                     const rawFavs = favoritesResponse.data.favorites || [];
@@ -100,7 +101,7 @@ function MyRecipes() {
 
         try {
             const response = await axios.put(
-                `http://localhost:5000/user/favorite/${recipeId}`, 
+                `${config.API_URL}/user/favorite/${recipeId}`, 
                 {}, 
                 {
                     headers: { Authorization: `Bearer ${token}` }
@@ -136,7 +137,7 @@ function MyRecipes() {
 
         try {
             const token = localStorage.getItem("token");
-            await axios.delete(`http://localhost:5000/api/recipes/${id}`, {
+            await axios.delete(`${config.API_URL}/api/recipes/${id}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setRecipes(prev => prev.filter(r => r._id !== id));

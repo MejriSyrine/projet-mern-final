@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { HiHeart } from 'react-icons/hi2';
 import { useNavigate } from 'react-router-dom';
+import config from '../config';
 
 function MyFavRecipes() {
     const navigate = useNavigate();
@@ -18,7 +19,7 @@ function MyFavRecipes() {
         }
         
         // Sinon, c'est un fichier local
-        return `http://localhost:5000/public/images/${coverImage}`;
+        return `${config.API_URL}/public/images/${coverImage}`;
     };
     useEffect(() => {
         const fetchFavoriteRecipes = async () => {
@@ -27,7 +28,7 @@ function MyFavRecipes() {
 
             try {
                 // Fetch favorites directly (requires auth)
-                const res = await axios.get('http://localhost:5000/user/favorites', {
+                const res = await axios.get(`${config.API_URL}/user/favorites`, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
 
@@ -49,7 +50,7 @@ function MyFavRecipes() {
             const user = JSON.parse(localStorage.getItem("user"));
             if (!user) return;
 
-            await axios.put(`http://localhost:5000/user/favorite/${recipeId}`, {}, {
+            await axios.put(`${config.API_URL}/user/favorite/${recipeId}`, {}, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }

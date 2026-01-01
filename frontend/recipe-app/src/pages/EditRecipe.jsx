@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './EditRecipe.css';
+import config from '../config';
 
 // Fonction helper pour les URLs d'images
 const getImageUrl = (coverImage) => {
@@ -15,7 +16,7 @@ const getImageUrl = (coverImage) => {
     }
     
     // Sinon, c'est un fichier local
-    return `http://localhost:5000/public/images/${coverImage}`;
+    return `${config.API_URL}/public/images/${coverImage}`;
 };
 
 function EditRecipe() {
@@ -41,7 +42,7 @@ function EditRecipe() {
     useEffect(() => {
         const getRecipe = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/recipes/${id}`);
+                const response = await axios.get(`${config.API_URL}/api/recipes/${id}`);
                 const res = response.data;
 
                 setRecipe({
@@ -140,7 +141,7 @@ function EditRecipe() {
                 formData.append('coverImage', recipe.coverImageFile);
             }
 
-            const res = await axios.put(`http://localhost:5000/api/recipes/${id}`, formData, {
+            const res = await axios.put(`${config.API_URL}/api/recipes/${id}`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     'Authorization': `Bearer ${localStorage.getItem('token')}`

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Market.css';
+import config from '../config';
 
 const Icons = {
   cart: (
@@ -98,7 +99,7 @@ function Market() {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch('http://localhost:5000/product');
+      const response = await fetch(`${config.API_URL}/product`);
       if (!response.ok) {
         throw new Error('Erreur lors du chargement des produits');
       }

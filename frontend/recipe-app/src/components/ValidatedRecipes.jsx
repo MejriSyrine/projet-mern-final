@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import config from '../config';
 
 function ValidatedRecipes() {
   const [recipes, setRecipes] = useState([]);
@@ -16,8 +17,8 @@ function ValidatedRecipes() {
     try {
       const token = localStorage.getItem("token");
       const endpoint = filter === 'mine' 
-        ? 'http://localhost:5000/api/recipes/validated/mine'
-        : 'http://localhost:5000/api/recipes/validated/all';
+        ? `${config.API_URL}/api/recipes/validated/mine`
+        : `${config.API_URL}/api/recipes/validated/all`;
       
       const response = await axios.get(endpoint, {
         headers: { 

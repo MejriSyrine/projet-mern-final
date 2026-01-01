@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import config from '../config';
 
 function NutritionistDashboard() {
   const [stats, setStats] = useState({
@@ -32,7 +33,7 @@ function NutritionistDashboard() {
       if (USE_DEBUG_ROUTE) {
         console.log("🔧 Mode debug activé - utilisation de /api/debug/stats");
         
-        const response = await axios.get('http://localhost:5000/api/debug/stats', {
+        const response = await axios.get(`${config.API_URL}/api/debug/stats`, {
           timeout: 5000
         });
         
@@ -62,7 +63,7 @@ function NutritionistDashboard() {
       console.log("🌐 Envoi requête normale à /api/recipes/stats");
       
       const response = await axios.get(
-        'http://localhost:5000/api/recipes/stats',
+        `${config.API_URL}/api/recipes/stats`,
         { 
           headers: { 
             'Authorization': `Bearer ${token}`,
@@ -209,7 +210,7 @@ function NutritionistDashboard() {
           </button>
           
           <button 
-            onClick={() => window.open('http://localhost:5000/api/debug/stats', '_blank')}
+            onClick={() => window.open(`${config.API_URL}/api/debug/stats`, '_blank')}
             style={{ padding: '3px 8px', fontSize: '12px' }}
           >
             Test API
@@ -386,7 +387,7 @@ function NutritionistDashboard() {
           
           <button 
             className="action-btn"
-            onClick={() => window.open('http://localhost:5000/api/debug/mongodb', '_blank')}
+            onClick={() => window.open(`${config.API_URL}/api/debug/mongodb`, '_blank')}
             style={{ backgroundColor: '#6c757d' }}
           >
             🗄️ Check MongoDB
@@ -423,7 +424,7 @@ function NutritionistDashboard() {
           <ol style={{ marginBottom: '0' }}>
             <li>Vérifiez que votre utilisateur a le rôle <code>"nutritionist"</code> dans MongoDB</li>
             <li>Déconnectez-vous et reconnectez-vous pour régénérer un token valide</li>
-            <li>Testez <a href="http://localhost:5000/api/debug/test-jwt" target="_blank" rel="noreferrer">/api/debug/test-jwt</a> pour générer un token de test</li>
+            <li>Testez <a href={`${config.API_URL}/api/debug/test-jwt`} target="_blank" rel="noreferrer">/api/debug/test-jwt</a> pour générer un token de test</li>
             <li>Une fois l'auth corrigée, désactivez le mode debug</li>
           </ol>
         </div>

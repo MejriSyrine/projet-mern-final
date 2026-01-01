@@ -3,8 +3,9 @@ import axios from 'axios';
 import { HiHeart, HiOutlineHeart } from "react-icons/hi2";
 import { useNavigate } from 'react-router-dom';
 import './RecipeCard.css';
+import config from '../config';
 
-const API_URL = 'http://localhost:5000';
+const API_URL = config.API_URL;
 
 const getImageUrl = (coverImage) => {
     if (!coverImage) {
@@ -29,7 +30,7 @@ function AllRecipes({ filter = "all" }) {
             setLoading(true);
             
             try {
-                const recipesResponse = await axios.get("http://localhost:5000/api/recipes");
+                const recipesResponse = await axios.get(`${config.API_URL}/api/recipes`);
                 
                 let recipesData = [];
                 
@@ -64,7 +65,7 @@ function AllRecipes({ filter = "all" }) {
                 if (token && storedUser) {
                     setUser(storedUser);
                     try {
-                        const favoritesResponse = await axios.get("http://localhost:5000/user/favorites", {
+                        const favoritesResponse = await axios.get(`${config.API_URL}/user/favorites`, {
                             headers: { Authorization: `Bearer ${token}` }
                         });
                         const rawFavs = favoritesResponse.data.favorites || favoritesResponse.data.favourites || [];
@@ -108,7 +109,7 @@ function AllRecipes({ filter = "all" }) {
         }
 
         try {
-            const res = await axios.put(`http://localhost:5000/user/favorite/${recipeId}`, null, {
+            const res = await axios.put(`${config.API_URL}/user/favorite/${recipeId}`, null, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             const rawFavs = res.data.favorites || res.data.favourites || [];

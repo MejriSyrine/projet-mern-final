@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './AddRecipes.css';
+import config from '../config';
 
 function AddRecipes() {
     const location = useLocation();
@@ -128,7 +129,7 @@ function AddRecipes() {
                 throw new Error('Vous devez être connecté pour ajouter une recette');
             }
 
-            const response = await axios.post("http://localhost:5000/api/recipes", formData, {
+            const response = await axios.post(`${config.API_URL}/api/recipes`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     'Authorization': `Bearer ${token}`

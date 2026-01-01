@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import config from '../config';
 
 function PendingRecipes() {
   const [recipes, setRecipes] = useState([]);
@@ -18,7 +19,7 @@ function PendingRecipes() {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        'http://localhost:5000/api/recipes/pending',
+        `${config.API_URL}/api/recipes/pending`,
         { 
           headers: { 
             'Authorization': `Bearer ${token}`,
@@ -39,7 +40,7 @@ function PendingRecipes() {
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `http://localhost:5000/api/recipes/${recipeId}/approve`,
+        `${config.API_URL}/api/recipes/${recipeId}/approve`,
         {},
         { 
           headers: { 
@@ -71,7 +72,7 @@ function PendingRecipes() {
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `http://localhost:5000/api/recipes/${recipeId}/reject`,
+        `${config.API_URL}/api/recipes/${recipeId}/reject`,
         { reason: rejectReason },
         { 
           headers: { 
