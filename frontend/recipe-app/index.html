@@ -14,9 +14,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <title>Vite + React</title>
 <script>
-  // Si l'URL n'a pas de hash, redirige vers /#/
+  // Si l'URL n'a pas de hash, redirige vers la même route sous /#/
+  // Exemple: /contact => /#/contact
   if (!window.location.hash) {
-    window.location.replace(window.location.href + '#/');
+    const { origin, pathname, search } = window.location;
+    const newPath = pathname === '/' ? '/' : pathname;
+    window.location.replace(origin + '/#' + newPath + (search || ''));
   }
 </script>
   </head>
