@@ -13,6 +13,12 @@
 <!-- Use modern, professional font stack: Outfit for headings, Inter for body -->
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <title>Vite + React</title>
+<script>
+  // Si l'URL n'a pas de hash, redirige vers /#/
+  if (!window.location.hash) {
+    window.location.replace(window.location.href + '#/');
+  }
+</script>
   </head>
   <body>
     <div id="root"></div>
