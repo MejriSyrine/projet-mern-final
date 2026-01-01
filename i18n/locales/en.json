@@ -1,0 +1,22 @@
+{
+  "auth": {
+    "emailRequired": "Email and password are required",
+    "invalidRole": "Invalid role",
+    "nutritionistIdRequired": "Nutritionist matricule is required",
+    "invalidMatricule": "Invalid nutritionist matricule",
+    "userExists": "User already exists",
+    "registerSuccess": "User registered successfully",
+    "invalidCredentials": "Invalid email or password",
+    "loginSuccess": "Login successful",
+    "serverError": "Server error"
+  },
+  "user": {
+    "notFound": "User not found"
+  },
+  "recipe": {
+    "notFound": "Recipe not found",
+    "created": "Recipe created successfully",
+    "updated": "Recipe updated successfully",
+    "deleted": "Recipe deleted successfully"
+  }
+}

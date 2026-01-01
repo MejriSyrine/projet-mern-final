@@ -1,0 +1,336 @@
+.home-page {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #fefefe 0%, #f8f9fa 100%);
+}
+
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 40px 80px;
+    gap: 60px;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 560px;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    border: 1px solid #6ee7b7;
+    border-radius: 24px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #059669;
+    margin-bottom: 20px;
+}
+
+.hero-content h1 {
+    font-size: 3.25rem;
+    font-weight: 800;
+    color: #1a1a2e;
+    line-height: 1.15;
+    margin: 0 0 24px 0;
+    letter-spacing: -0.03em;
+}
+
+.hero-content p {
+    font-size: 1.125rem;
+    color: #64748b;
+    line-height: 1.7;
+    margin: 0 0 32px 0;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 48px;
+}
+
+.btn-primary-hero,
+.btn-secondary-hero {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 28px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    border: none;
+    margin: 0;
+}
+
+.btn-primary-hero {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    box-shadow: 0 8px 24px rgba(16, 185, 129, 0.35);
+}
+
+.btn-primary-hero:hover {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(16, 185, 129, 0.45);
+}
+
+.btn-secondary-hero {
+    background: white;
+    color: #374151;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.btn-secondary-hero:hover {
+    background: #f9fafb;
+    border-color: #d1d5db;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.hero-stats {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding: 24px 32px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    border: 1px solid #f1f5f9;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-item svg {
+    color: #10b981;
+    margin-bottom: 4px;
+}
+
+.stat-number {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: #1a1a2e;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    font-weight: 500;
+}
+
+.stat-divider {
+    width: 1px;
+    height: 40px;
+    background: #e5e7eb;
+}
+
+.hero-image {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 480px;
+}
+
+.image-backdrop {
+    position: absolute;
+    width: 380px;
+    height: 380px;
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.hero-image img {
+    position: relative;
+    z-index: 1;
+    max-width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: contain;
+    animation: float 4s ease-in-out infinite;
+}
+
+.floating-card {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+    animation: float-card 3s ease-in-out infinite;
+}
+
+.floating-card.card-1 {
+    top: 20%;
+    right: -10%;
+    animation-delay: 0s;
+    color: #be185d;
+}
+
+.floating-card.card-2 {
+    bottom: 25%;
+    left: -5%;
+    animation-delay: 1.5s;
+    color: #b45309;
+}
+
+.card-text {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #374151;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+@keyframes float-card {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(2deg); }
+}
+
+.wave-divider {
+    margin-top: -60px;
+    color: #f8f9fa;
+}
+
+.wave-divider svg {
+    display: block;
+    width: 100%;
+    height: 120px;
+}
+
+.recipes-section {
+    background: #f8f9fa;
+    padding: 60px 20px 80px;
+}
+
+.section-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 48px;
+}
+
+.section-header h2 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 0 0 12px 0;
+}
+
+.section-header p {
+    font-size: 1.05rem;
+    color: #64748b;
+    margin: 0;
+}
+
+.nutritionist-hero {
+    background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+    border-radius: 0 0 32px 32px;
+}
+
+.nutritionist-id {
+    display: inline-block;
+    padding: 4px 12px;
+    background: #fef3c7;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #b45309;
+    margin-bottom: 16px;
+}
+
+@media (max-width: 968px) {
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 24px 60px;
+        gap: 40px;
+    }
+    
+    .hero-content {
+        max-width: 100%;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-actions {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .hero-stats {
+        justify-content: center;
+    }
+    
+    .hero-image {
+        max-width: 320px;
+    }
+    
+    .image-backdrop {
+        width: 280px;
+        height: 280px;
+    }
+    
+    .floating-card.card-1 {
+        right: 0;
+    }
+    
+    .floating-card.card-2 {
+        left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    .hero-actions {
+        flex-direction: column;
+    }
+    
+    .btn-primary-hero,
+    .btn-secondary-hero {
+        width: 100%;
+    }
+    
+    .hero-stats {
+        flex-direction: column;
+        gap: 16px;
+        padding: 20px;
+    }
+    
+    .stat-divider {
+        width: 60px;
+        height: 1px;
+    }
+    
+    .floating-card {
+        display: none;
+    }
+}

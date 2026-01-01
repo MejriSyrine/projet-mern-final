@@ -1,0 +1,40 @@
+{
+  "navbar": {
+    "home": "Accueil",
+    "myFavorites": "Mes Favoris",
+    "myRecipes": "Mes Recettes",
+    "contact": "Contact",
+    "login": "Connexion",
+    "logout": "Déconnexion"
+  },
+  "auth": {
+    "emailRequired": "L'email est requis",
+    "passwordRequired": "Le mot de passe est requis",
+    "invalidCredentials": "Email ou mot de passe invalide",
+    "registerSuccess": "Utilisateur enregistré avec succès",
+    "loginSuccess": "Connexion réussie",
+    "userExists": "L'utilisateur existe déjà",
+    "serverError": "Erreur serveur"
+  },
+  "recipes": {
+    "addRecipe": "Ajouter une Recette",
+    "editRecipe": "Modifier la Recette",
+    "deleteRecipe": "Supprimer la Recette",
+    "myRecipes": "Mes Recettes",
+    "favorites": "Favoris",
+    "noRecipes": "Aucune recette trouvée",
+    "title": "Titre",
+    "description": "Description",
+    "ingredients": "Ingrédients",
+    "instructions": "Instructions"
+  },
+  "common": {
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "loading": "Chargement...",
+    "search": "Rechercher",
+    "filter": "Filtrer"
+  }
+}

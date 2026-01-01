@@ -1,0 +1,197 @@
+/* ====================
+   🎯 BUTTONS
+==================== */
+
+/* Base button styles */
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Thème sombre */
+[data-theme="dark"] button {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+[data-theme="dark"] button:hover {
+  border-color: #646cff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(100, 108, 255, 0.3);
+}
+
+/* Thème clair */
+[data-theme="light"] button {
+  background-color: #f9f9f9;
+  color: #213547;
+}
+
+[data-theme="light"] button:hover {
+  border-color: #747bff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(116, 123, 255, 0.3);
+}
+
+/* Boutons avec gradient (styles principaux) */
+button.share-btn,
+button.submit-btn,
+.btn-add-cart {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark)) !important;
+  color: white !important;
+  border: none !important;
+  box-shadow: 0 10px 30px rgba(255, 107, 157, 0.12) !important;
+  padding: 12px 30px !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+}
+
+button.share-btn:hover,
+button.submit-btn:hover,
+.btn-add-cart:hover {
+  background: linear-gradient(135deg, var(--primary-dark), #ff2b6a) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 12px 34px rgba(255, 59, 129, 0.14) !important;
+  border-color: transparent !important;
+}
+
+/* ====================
+   🏷️ CATEGORY STYLES
+==================== */
+
+/* Badges de catégorie */
+.category-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px; /* moved to left so it doesn't overlap favorite (top-right) */
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  z-index: 1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+} 
+
+.category-badge.sweet {
+  background: linear-gradient(135deg, #ff6b9d, #ff4081);
+  color: white;
+}
+
+/* Make category badges softer */
+.category-badge { opacity: 0.95; font-size: 0.85rem; }
+
+.cards-wrapper { padding-bottom: 40px; }
+
+.category-badge.sour {
+  background: linear-gradient(135deg, #4CAF50, #2E7D32);
+  color: white;
+}
+
+.category-badge.salty {
+  background: linear-gradient(135deg, #2196F3, #0D47A1);
+  color: white;
+}
+
+.category-badge.spicy {
+  background: linear-gradient(135deg, #FF5722, #D84315);
+  color: white;
+}
+
+/* Sections de catégories */
+.category-section {
+  margin-bottom: 50px;
+}
+
+.category-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 3px solid;
+  position: relative;
+}
+
+.sweet-title {
+  color: #ff6b9d;
+  border-color: #ff6b9d;
+}
+
+.sour-title {
+  color: #4CAF50;
+  border-color: #4CAF50;
+}
+
+.salty-title {
+  color: #2196F3;
+  border-color: #2196F3;
+}
+
+.spicy-title {
+  color: #FF5722;
+  border-color: #FF5722;
+}
+
+/* Carte de recette avec catégorie */
+.recipe-card.with-category:hover .category-badge {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+/* Filtres de catégorie */
+.category-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+  justify-content: center;
+}
+
+.category-filter button {
+  background: var(--bg-card);
+  border: 2px solid var(--border-color);
+  color: var(--text-main);
+  transition: all 0.3s ease;
+}
+
+.category-filter button.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.category-filter button:hover {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+/* ====================
+   📱 RESPONSIVE
+==================== */
+
+@media only screen and (max-width: 768px) {
+  .category-title {
+    font-size: 1.5rem;
+  }
+  
+  .category-filter {
+    gap: 8px;
+  }
+  
+  .category-filter button {
+    padding: 0.4em 0.8em;
+    font-size: 0.9rem;
+  }
+  
+  .category-badge {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    top: 8px;
+    right: 8px;
+  }
+}

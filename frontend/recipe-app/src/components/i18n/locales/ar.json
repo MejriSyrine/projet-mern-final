@@ -1,0 +1,40 @@
+{
+  "navbar": {
+    "home": "الرئيسية",
+    "myFavorites": "المفضلة",
+    "myRecipes": "وصفاتي",
+    "contact": "اتصل بنا",
+    "login": "تسجيل الدخول",
+    "logout": "تسجيل الخروج"
+  },
+  "auth": {
+    "emailRequired": "البريد الإلكتروني مطلوب",
+    "passwordRequired": "كلمة المرور مطلوبة",
+    "invalidCredentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة",
+    "registerSuccess": "تم تسجيل المستخدم بنجاح",
+    "loginSuccess": "تم تسجيل الدخول بنجاح",
+    "userExists": "المستخدم موجود بالفعل",
+    "serverError": "خطأ في الخادم"
+  },
+  "recipes": {
+    "addRecipe": "إضافة وصفة",
+    "editRecipe": "تعديل الوصفة",
+    "deleteRecipe": "حذف الوصفة",
+    "myRecipes": "وصفاتي",
+    "favorites": "المفضلة",
+    "noRecipes": "لا توجد وصفات",
+    "title": "العنوان",
+    "description": "الوصف",
+    "ingredients": "المكونات",
+    "instructions": "التعليمات"
+  },
+  "common": {
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "loading": "جاري التحميل...",
+    "search": "بحث",
+    "filter": "تصفية"
+  }
+}
