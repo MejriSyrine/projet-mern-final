@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { HashRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
@@ -171,10 +171,10 @@ export default function App() {
   }, []);
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <AppLayout userRole={userRole}>
         <AppRoutes userRole={userRole} />
       </AppLayout>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
